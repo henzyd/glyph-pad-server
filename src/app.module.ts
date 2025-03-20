@@ -4,6 +4,8 @@ import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { NotesModule } from './notes/notes.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { AppService } from './app.service';
       synchronize: process.env.NODE_ENV !== 'production',
       autoLoadEntities: true,
     }),
+    NotesModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
