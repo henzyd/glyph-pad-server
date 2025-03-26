@@ -16,7 +16,7 @@ export class User {
   @Column()
   ip: string;
 
-  @OneToMany(() => Note, (note) => note.create_by)
+  @OneToMany(() => Note, (note) => note.created_by)
   notes: Note[];
 
   @CreateDateColumn()

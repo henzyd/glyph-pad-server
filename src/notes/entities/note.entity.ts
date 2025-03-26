@@ -20,7 +20,7 @@ export class Note {
   description: string;
 
   @ManyToOne(() => User, (user) => user.notes)
-  create_by: User;
+  created_by: User;
 
   @CreateDateColumn()
   created_at: Date;
