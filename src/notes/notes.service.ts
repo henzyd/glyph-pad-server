@@ -22,18 +22,21 @@ export class NotesService {
 
   async findAll(userIp: string): Promise<Note[]> {
     const user = await this.usersService.findOne(userIp);
-    return this.notesRepository.find({
+    const notes = await this.notesRepository.find({
       where: {
-        created_by: user,
+        created_by: { id: user.id },
       },
     });
+    return notes;
   }
 
   async findOne(id: string, userIp: string): Promise<Note> {
     const user = await this.usersService.findOne(userIp);
     const note = await this.notesRepository.findOne({
-      where: { id, created_by: user },
-      relations: ['created_by'],
+      where: { id, created_by: { id: user.id } },
+      relations: {
+        created_by: true,
+      },
     });
     if (!note) throw new NotFoundException(`Note not found`);
     return note;
