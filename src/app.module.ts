@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NotesModule } from './notes/notes.module';
 import { UsersModule } from './users/users.module';
+import { LabelsModule } from './labels/labels.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UsersModule } from './users/users.module';
     }),
     NotesModule,
     UsersModule,
+    LabelsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
