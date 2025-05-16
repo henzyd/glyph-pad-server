@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { NotesModule } from './notes/notes.module';
 import { UsersModule } from './users/users.module';
 import { LabelsModule } from './labels/labels.module';
@@ -22,7 +20,5 @@ import { LabelsModule } from './labels/labels.module';
     UsersModule,
     LabelsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

@@ -22,9 +22,13 @@ export class NotesService {
 
   async findAll(userIp: string): Promise<Note[]> {
     const user = await this.usersService.findOne(userIp);
+    if (!user) return [];
     const notes = await this.notesRepository.find({
       where: {
         created_by: { id: user.id },
+      },
+      order: {
+        updated_at: 'DESC',
       },
     });
     return notes;
